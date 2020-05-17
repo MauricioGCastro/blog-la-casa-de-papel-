@@ -1,0 +1,1386 @@
+(function(){
+
+var winRef=top;
+//var body = winRef.document.body;
+
+function locateTopBanner(className,callback)
+{
+    var f;
+    var td;
+    var googletag=winRef.googletag;
+    var document=winRef.document;
+    
+    if(document.location.href.match(/televisa/))
+    {
+        var el=document.getElementById("1x1");
+        if(el)          
+            callback(el);
+        return;
+    }
+    if(document.location.href.match(/filmaffinity/))
+    {
+        var el=document.getElementById("sc-top");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    if(document.location.href.match(/lasestrellas/))
+    {
+        var el=document.getElementById("1x1");
+        if(el)          
+            callback(el);
+        return;
+    }
+       
+    if(document.location.href.match(/tudn/))
+    {
+        var el=document.getElementById("1x1");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    if(document.location.href.match(/publimetro/))
+    {
+        var el=document.getElementById("ad_skin");
+        if(el)          
+            callback(el);
+        return;
+    }
+    
+    if(document.location.href.match(/aristeguionline/))
+    {
+        var el=document.getElementsByClassName("sc-desktopwallpaper")[0];
+        if(el)          
+            callback(el);
+        return;
+    }
+    
+    if(document.location.href.match(/motociclismo/))
+    {
+        var el=document.getElementById("div-gpt-ad-1453371893713-0");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    if(document.location.href.match(/nuevamujer/))
+    {
+        var el=document.getElementById("ad_skin");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    if(document.location.href.match(/fayerwayer/))
+    {
+        var el=document.getElementById("ad_skin");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+
+    if(document.location.href.match(/vozpopuli/))
+    {
+        var el=document.getElementById("sas_71877");
+        if(el)          
+            callback(el);
+        return;
+    }
+    
+    if(document.location.href.match(/juanfutbol/))
+    {
+        var el=document.getElementById("div-gpt-ad-1478274385544-0");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    if(document.location.href.match(/enfemenino/))
+    {
+        var el=document.getElementById("div-gpt-ad-banner_atf_wrapper");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    if(document.location.href.match(/losreplicantes/))
+    {
+        var el=document.getElementById("sc-top");
+        if(el)          
+            callback(el);
+        return;
+    }
+    
+    if(document.location.href.match(/bekia/))
+    {
+        var el=document.getElementById("sc-top");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    if(document.location.href.match(/formulatv/))
+    {
+        var el=document.getElementById("sc-top");
+        if(el)          
+            callback(el);
+        return;
+    }
+    if(document.location.href.match(/menzig/))
+    {
+        var el=document.getElementById("sc-top");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    if(document.location.href.match(/navarratelevision/))
+    {
+        var el=document.getElementById("sc-top");
+        if(el)          
+            callback(el);
+        return;
+    }
+    
+    if(document.location.href.match(/m.europapress.es/))
+    {
+        var el=document.getElementById("sc-top");
+        if(el)          
+            callback(el);
+        return;
+    }
+
+    
+    if(f=winRef.document.getElementsByClassName(className))
+    {
+        if(f.length == 1)
+        {
+            td=f[0];
+            callback(td);
+            return;
+        } //NNJJ 
+        else if (f=winRef.document.getElementById("sas_52030")) {
+            td=f;
+            callback(td);
+            return;
+        } //TESTPAGE
+        else if (f=winRef.document.getElementById("sas_35211")) {
+            td=f;
+            callback(td);
+            return;
+        } //TESTPAGE
+        else if (f=winRef.document.getElementById("sc-desktopwallpaper")) {
+            td=f;
+            callback(td);
+            return;
+        }
+        //MULTIMEDIOS 
+/*        else if (f=winRef.document.getElementById("dfp-ad-intersticial-wrapper")) {
+            td=f;
+            callback(td);
+            return;
+        }*/
+    }
+    
+
+    
+        if(typeof googletag != "undefined")
+        {
+        googletag.cmd.push(function(){
+            var au=googletag.pubads().getSlots();
+            var maxSize=null;
+            var st=(((t = document.documentElement) || (t = document.body.parentNode))
+                && typeof t.scrollTop == 'number' ? t : document.body).scrollTop;
+
+            for(var l=0;l<au.length;l++)
+            {
+                var dd=document.getElementById(au[l].getSlotElementId());
+                if(!dd)
+                    continue;
+                var bbox=dd.getBoundingClientRect();
+                if(bbox.height < 10)
+                    continue;
+                var hh=bbox.top+st;
+                var w=dd.offsetWidth;
+                if(hh > 1200)
+                    continue;
+                if(maxSize==null || maxSize.w < w || (maxSize.w == w && hh < maxSize.top))
+                {
+                    maxSize={w:bbox.width,div:dd,slot:au[l],top:hh}
+                    continue;
+                }
+            }
+            if(maxSize)
+            {
+                callback(maxSize.div);
+            }
+        });
+        }
+        else
+        {
+            var id_exist = document.getElementById("sc-desktopwallpaper");
+            if (id_exist) {
+                return
+            }else {
+                var th=document.createElement("div");
+                // Existe un elemento llamado "innerDiv"? (Preview de google)
+                var iD=document.getElementById("innerDiv") || document.body;
+                iD.insertBefore(th,null);
+                th.id="sc-desktopwallpaper";
+                callback(th);
+            }
+
+        }
+} // end locateTopBanner
+
+
+function locateMPUBanner(className,callback)
+{
+    var f;
+    var td;
+    var document=winRef.document;
+
+ 
+    // sc-takeover
+    if (f=winRef.document.getElementsByClassName(className)){
+
+        if(f.length == 1){
+            td=f[0];
+            callback(td);
+            return;
+        } // siterep
+        else if (f=winRef.document.getElementById("sc-mpu-top")) 
+        {
+            td=f;
+            callback(td);
+            return;
+        }
+        else if (f=winRef.document.getElementById("div-gpt-ad-1393321029209-2")) 
+        {
+            td=f;
+            callback(td);
+            return;
+        }
+
+    } //
+    else {
+        var id_exist = winRef.document.getElementById("sc-mpu-top");
+        if (id_exist) {
+            return
+        } else {
+                var th=document.createElement("div");
+                // Existe un elemento llamado "innerDiv"? (Preview de google)
+                var iD=document.getElementById("innerDiv") || document.body;
+                iD.insertBefore(th,null);
+                th.id="sc-takeover";
+                callback(th);
+            }
+
+        }
+} 
+// end locate MPU
+
+
+var targetWindow=null;
+winRef.addEventListener("message",function(event){
+    var googletag=winRef.googletag;
+    var document=winRef.document;
+
+    try {
+        var decoded = JSON.parse(event.data);
+        if(typeof decoded.type=="undefined" || decoded.type!="SMC")
+            return;
+        var body = winRef.document.body;
+        switch(decoded.subtype) {
+            case "HELLO":
+            {
+                if(targetWindow!=null)
+                    return;
+                targetWindow=event.source;
+                event.source.postMessage(JSON.stringify({"type": "SMC", "subtype": "ACK"}),"*");
+
+            }break;
+            case "CREATIVE": // SERVICE_CASE
+            {
+                winRef._SMC_SkinParams = decoded;
+                var f=function() {
+
+                        switch (decoded.creative.serviceType) {
+                            case "skin": {
+                                loadPerSiteFixes();
+                                serveSkin(decoded.creative);
+                                body.className += ' sc-rmp sc-skin';
+                            }
+                                break;
+                            case "videowall": {
+                                locateTopBanner("sc-desktopwallpaper", function (targetDiv) {
+                                loadPerSiteFixes();
+                                serveVideoWall(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp sc-skin-exp sc-skin-wall';
+                                });
+                            }
+                                break;
+                            case "skinInteractive": {
+                                locateTopBanner("sc-desktopwallpaper", function (targetDiv) {
+                                loadSkinInteractive();
+                                loadPerSiteFixes();
+                                serveVideoWall(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp sc-skin-exp sc-skin-wall';
+                                });
+                            }
+                                break;
+                            case "videowall2": {
+                                locateTopBanner("sc-desktopwallpaper", function (targetDiv) {
+                                loadPerSiteFixes();
+                                serveVideowall2(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp sc-skin-exp sc-skin-wall';
+                                });
+                            }
+                                break;
+                            case "skinExp": {
+
+                                locateTopBanner("sc-desktopwallpaper", function (targetDiv) {
+                                loadPerSiteFixes();
+                                serveSkinExp(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp sc-skin-exp';
+                                });
+                            }
+                                break;
+                            case "mobilevideowall": {
+                                mobilevideowall(decoded.creative);
+                            }
+                                break;
+                            case "videowallmob": {
+                                loadVideoWallMobilePerSiteFixes();
+                                locateMPUBanner("sc-takeover", function (targetDiv) {
+                                servevideowallmob(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp-videowallmob';
+                                });
+                            }
+                                break;
+                            case "expandbanner": { 
+                                loadExpandBannerPerSiteFixes();
+                                locateTopBanner("sc-desktopwallpaper", function (targetDiv) {
+                                serveexpandbanner(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp-expandbanner-desktop sc-skin-exp';
+                                });
+                            }
+                                break;
+
+                            case "expandbanner2": { 
+                                //loadExpandBannerPerSiteFixes();
+                                locateTopBanner("sc-desktopwallpaper", function (targetDiv) {
+                                serveexpandbanner2(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp-expandbanner-desktop sc-skin-exp';
+                                });
+                            }
+                                break;
+
+                            case "expandbannerMobile": { 
+                                loadExpandBannerMobilePerSiteFixes();
+                                locateTopBanner("sc-desktopwallpaper", function (targetDiv) {
+                                serveexpandbannerMobile(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp-expandbanner-mobile';
+                                });
+                            }
+                                break;
+
+                            case "osa": { 
+                                loadOSAPerSiteFixes();
+                                serveosaMobile(decoded.creative);
+                                body.className += ' sc-rmp-osa';
+                            }
+                                break;
+
+                            case "takeover": { 
+                                loadTakeoverPerSite();
+                                locateMPUBanner("sc-takeover", function (targetDiv) {
+                                serveTakeover(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp-takeover';
+                                });
+                            }
+                                break;
+
+                            case "interstitial": { 
+
+
+                                loadInterstitialPerSite();
+                                body.className += ' sc-rmp-interstitial';
+                                serveInterstitial(decoded.creative);
+                                // locateMPUBanner("sc-takeover", function (targetDiv) {
+                                // //serveInterstitial(targetDiv, decoded.creative);
+                                // body.className += ' sc-rmp-interstitial';
+                                // });
+                            }
+                                break;
+                                
+                            case "bannernoexpand": { 
+                                loadExpandBannerPerSiteFixes();
+                                locateTopBanner("sc-desktopwallpaper", function (targetDiv) {
+                                servebannernoexpand(targetDiv, decoded.creative);
+                                body.className += ' sc-rmp sc-skin';
+                                });
+                            }
+                                break;
+
+                            case "bxsDesktop": { 
+                                loadBxsDesktop();
+                                locateTopBanner("bxs-bb", function (targetDiv) {
+                                serverbxsDesktop(targetDiv, decoded.creative);
+                                body.className += ' bxs-desktop';
+                                });
+                            }
+                                break;
+
+                            case "bxsMobile": { 
+                                loadBxsMobile();
+                                locateTopBanner("bxs-bb", function (targetDiv) {
+                                serverbxsMobile(targetDiv, decoded.creative);
+                                body.className += ' bxs-mobile';
+                                });
+                            }
+                                break;
+                        }
+
+                }
+                if(typeof googletag != "undefined") {
+                    googletag.cmd.push(function () {
+                        f.apply(winRef);
+                    });
+                }
+                else
+                    f.apply(winRef);
+            }
+        }
+
+
+
+    }
+    catch(e)
+    {
+
+    }
+});
+
+
+
+
+
+function loadScript(url) {
+    var googletag=winRef.googletag;
+    var document=winRef.document;
+    
+    var sc = document.createElement("script");
+    sc.src = url;
+    sc.async = "async";
+    document.body.appendChild(sc);
+}
+
+// Size es 980x250 o 300x250..o lo que se parsee
+function loadFTCreative(src, id, size,click, w) {
+    var document=winRef.document;
+    
+    w.ftClick = click;
+    w["ftExpTrack_" + id] = "";
+    w.ftX = "";
+    w.ftY = "";
+    w.ftZ = "";
+    w.ftOBA = 1;
+    w.ftContent = "";
+    w.ftCustom = "";
+    w["ft" + size + "_OOBclickTrack"] = "";
+    w.ftRandom = Math.random() * 1000000;
+    w["ftClick_" + id] = ftClick;
+    w["ftCustomViewTrack_" + id] = '';
+    /*if(typeof(ft_referrer)=="undefined"){w.ft_referrer=(function(){var r="";if(w==top){r=w.location.href;}else{try{r=w.parent.location.href;}catch(e){}r=(r)?r:document.referrer;}while(encodeURIComponent(r).length>1000){r=r.substring(0,r.length-1);}return r;}());}
+     var ftDomain = (w==top)?"":(function(){var d=document.referrer,h=(d)?d.match("(?::q/q/)+([qw-]+(q.[qw-]+)+)(q/)?".replace(/q/g,decodeURIComponent("%"+"5C")))[1]:"";return (h&&h!=location.host)?"&ft_ifb=1&ft_domain="+encodeURIComponent(h):"";}());*/
+    var ftDomain = document.location.href.replace(/http[s]{0,1}:\/\//, '');
+    var ft_referrer = ftDomain;
+    var ftTag = document.createElement("script");
+    ftTag.id = "ft_servedby_" + id;
+    ftTag.src = src + "?ftx=" + ftX + "&fty=" + ftY + "&ftadz=" + ftZ + "&ftscw=" + ftContent + "&ft_custom=" + ftCustom + "&ftOBA=" + ftOBA + ftDomain + "&ft_agentEnv=" + (w.mraid || w.ormma ? "1" : "0") + "&ft_referrer=" + encodeURIComponent(ft_referrer) + "&cachebuster=" + ftRandom;
+    ftTag.name = "ftscript_" + size;
+    var f=function(){document.body.appendChild(ftTag);}
+    if(w.document.readyState=="loading")
+        w.document.addEventListener('readystatechange',f);
+    else
+        f();
+
+
+}
+
+function loadNOFTCreative(id) {
+    var document=winRef.document;
+    
+        var f=function(){document.body.appendChild(ftTag);}
+    if(w.document.readyState=="loading")
+        w.document.addEventListener('readystatechange',f);
+    else
+        f();
+
+}
+
+function loadFTcpeCreative(src, id, size,click, expand, w) {
+    var document=winRef.document;
+    
+    w.ftClick = click;
+    w["ftExpTrack_" + id] = expand;
+    w.ftX = "";
+    w.ftY = "";
+    w.ftZ = "";
+    w.ftOBA = 1;
+    w.ftContent = "";
+    w.ftCustom = "";
+    w["ft" + size + "_OOBclickTrack"] = "";
+    w.ftRandom = Math.random() * 1000000;
+    w["ftClick_" + id] = ftClick;
+    w["ftCustomViewTrack_" + id] = '';
+    /*if(typeof(ft_referrer)=="undefined"){w.ft_referrer=(function(){var r="";if(w==top){r=w.location.href;}else{try{r=w.parent.location.href;}catch(e){}r=(r)?r:document.referrer;}while(encodeURIComponent(r).length>1000){r=r.substring(0,r.length-1);}return r;}());}
+     var ftDomain = (w==top)?"":(function(){var d=document.referrer,h=(d)?d.match("(?::q/q/)+([qw-]+(q.[qw-]+)+)(q/)?".replace(/q/g,decodeURIComponent("%"+"5C")))[1]:"";return (h&&h!=location.host)?"&ft_ifb=1&ft_domain="+encodeURIComponent(h):"";}());*/
+    var ftDomain = document.location.href.replace(/http[s]{0,1}:\/\//, '');
+    var ft_referrer = ftDomain;
+    var ftTag = document.createElement("script");
+    ftTag.id = "ft_servedby_" + id;
+    ftTag.src = src + "?ftx=" + ftX + "&fty=" + ftY + "&ftadz=" + ftZ + "&ftscw=" + ftContent + "&ft_custom=" + ftCustom + "&ftOBA=" + ftOBA + ftDomain + "&ft_agentEnv=" + (w.mraid || w.ormma ? "1" : "0") + "&ft_referrer=" + encodeURIComponent(ft_referrer) + "&cachebuster=" + ftRandom;
+    ftTag.name = "ftscript_" + size;
+    var f=function(){document.body.appendChild(ftTag);}
+    if(w.document.readyState=="loading")
+        w.document.addEventListener('readystatechange',f);
+    else
+        f();
+
+
+}
+
+
+function loadPerSiteFixes() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/Skins/skin_collapse_css_template.js");
+}
+
+function loadSkinInteractive() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/Skins/skin_interactive.js");
+}
+
+function loadVideoWallMobilePerSiteFixes() {
+    loadScript("https://sc-devel.s3.eu-central-1.amazonaws.com/videowallmobile/new/videoparalaxnew_collapse_css_template.js");
+}
+
+function loadExpandBannerPerSiteFixes() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/billboard/billboard_collapse_css_template.js");
+}
+
+function loadExpandBannerMobilePerSiteFixes() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/viewability/320x100_collapse_template.js");
+}
+
+
+
+function loadTakeoverPerSite() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/takeover/takeover_collapse_template.js");
+}
+
+function loadInterstitialPerSite() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/interstitial/interstitial_collapse_template.js");
+}
+
+function loadOSAPerSiteFixes() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/videowallmobile/new/rmp_osa_collapse_css_template.js");
+}
+
+function loadBxsDesktop() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/brandxsite/970x250_brandxsite_publicis_template.js");
+}
+
+function loadBxsMobile() {
+    loadScript("https://s3.eu-central-1.amazonaws.com/sc-devel/brandxsite/320x100_brandxsite_publicis_template.js");
+}
+
+/**
+
+ Skin sencilla (980x200 + background)
+
+ **/
+
+function serveSkin(adsParams) {
+
+    //loadFTCreative(adsParams.banner_src,adsParams.ftdiv,adsParams.banner_size,window);
+    
+    adjustContainer(adsParams, "980px");
+}
+function mobilevideowall(adsParams) {
+
+    //loadFTCreative(adsParams.banner_src,adsParams.ftdiv,adsParams.banner_size,window);
+    loadVideoWallMobilePerSiteFixes();
+    adjustContainer(adsParams, "100%");
+}
+
+function servevideowallmob(targetDiv,adsParams) {
+
+
+    var sc_width = parent.window.screen.width;
+    var sc_height_portrait = sc_width*1.75;
+    var document = winRef.document;
+    var subDiv = document.createElement("div");
+
+    var document=winRef.document;
+        targetDiv.style.height = "667px";
+        targetDiv.style.width = "100%";
+
+    //
+    targetDiv.style.position="relative";
+    targetDiv.style.height = sc_height_portrait+"px";
+    targetDiv.style.width = sc_width+"px";  
+    //
+    subDiv.style.position="absolute";
+    subDiv.style.width = sc_width+"px";
+    subDiv.style.height = sc_height_portrait+"px";
+    subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+    //
+    targetDiv.appendChild(subDiv);
+
+    //loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,top);
+}
+
+function serveosaMobile(targetDiv,adsParams) {
+
+   
+    //loadFTCreative(adsParams.banner_src,adsParams.ftdiv,adsParams.banner_size,window);
+    loadOSAPerSiteFixes();
+    adjustContainer(adsParams, "100%");
+}
+
+function serveexpandbanner(targetDiv,adsParams) {
+    var document=winRef.document;
+        targetDiv.style.position="relative";
+    var subDiv=document.createElement("div");
+    subDiv.style.position="absolute";
+    subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+    targetDiv.appendChild(subDiv);
+
+    loadExpandBannerPerSiteFixes();
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,top);
+}
+
+function serveexpandbanner2(targetDiv,adsParams) {
+    var document=winRef.document;
+        targetDiv.style.position="relative";
+    var subDiv=document.createElement("div");
+    subDiv.style.position="absolute";
+    subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+    targetDiv.appendChild(subDiv);
+
+    //loadExpandBannerPerSiteFixes();
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,top);
+}
+
+function bannernoexpand(targetDiv,adsParams) {
+    var document=winRef.document;
+        targetDiv.style.position="relative";
+    var subDiv=document.createElement("div");
+    subDiv.style.position="absolute";
+    subDiv.id="sc-noft-banner";
+    targetDiv.appendChild(subDiv);
+
+    loadExpandBannerPerSiteFixes();
+    loadNOFTCreative(adsParams.banner_ftdiv,top);
+}
+
+
+function serveexpandbannerMobile(targetDiv,adsParams) {
+    var document=winRef.document;
+        targetDiv.style.position="relative";
+        targetDiv.style.height = "100px";
+        targetDiv.style.width = "320px";
+        targetDiv.style.margin = "0px auto";  
+    var subDiv=document.createElement("div");
+    subDiv.style.position="absolute";
+    subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+    targetDiv.appendChild(subDiv);
+
+    loadExpandBannerMobilePerSiteFixes();
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,top);
+}
+
+function serveTakeover(targetDiv,adsParams) {
+
+    var document=winRef.document;
+        targetDiv.style.position="relative";
+        targetDiv.style.height="250px";
+        targetDiv.style.width="300px";
+        targetDiv.style.margin="0px auto";
+        targetDiv.style.overflow="visible";
+        targetDiv.className += ' sc-takeover';
+        
+    var subDiv=document.createElement("div");
+    subDiv.style.position="absolute";
+    subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+    targetDiv.appendChild(subDiv);
+
+    loadTakeoverPerSite();
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,top);
+}
+
+function serveInterstitial(adsParams) {
+
+    loadInterstitialPerSite();
+    //loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,top);
+}
+
+function serverbxsDesktop(targetDiv,adsParams) {
+    var document = winRef.document;
+        targetDiv.style.position="relative";
+        targetDiv.style.height = "250px";
+        targetDiv.style.width = "970px";
+        targetDiv.style.margin = "0px auto";
+        targetDiv.style.zIndex = "auto";
+
+    var subDiv = document.createElement("div");
+        subDiv.style.position="absolute";
+        subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+        targetDiv.appendChild(subDiv);
+
+    loadBxsDesktop();
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,top);
+}
+
+
+function serverbxsMobile(targetDiv,adsParams) {
+    var document=winRef.document;
+        targetDiv.style.position="relative";
+        targetDiv.style.height = "100px";
+        targetDiv.style.width = "320px";
+        targetDiv.style.margin = "0px auto";
+
+    var subDiv=document.createElement("div");
+        subDiv.style.position="absolute";
+        subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+        
+    targetDiv.appendChild(subDiv);
+
+    loadBxsMobile();
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,top);
+}
+
+
+function serveVideoWall(targetDiv,adsParams) {
+    
+    var document=winRef.document;
+
+    targetDiv.style.position="relative";
+    var subDiv=document.createElement("div");
+    subDiv.style.position="absolute";
+    subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+    targetDiv.appendChild(subDiv);
+
+
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,winRef);
+
+    
+
+    var size = winRef.screen.width;
+    if (size >= 1025) {
+        adsParams.image = 'https://cdn.flashtalking.com/42249/assets/bg_transparent.png';
+    } else if (size > 800 && size < 1025) {
+        adsParams.image = 'https://cdn.flashtalking.com/42249/assets/bg_transparent.png';
+    } else if (size <= 800) {
+        adsParams.image = 'https://cdn.flashtalking.com/42249/assets/bg_transparent.png';
+    }
+    if(typeof adsParams.background_image!="undefined")
+        adsParams.image=adsParams.background_image;
+
+    // Funci?n de gesti?n del evento del click
+    setupBodyBackground(adsParams);
+    if(adsParams.background_src!="")
+       loadFTCreative(adsParams.background_src, adsParams.background_ftdiv, adsParams.background_size, adsParams.click, winRef);
+}
+
+
+function serveVideowall2(targetDiv,adsParams) {
+    
+    var document=winRef.document;
+
+    targetDiv.style.position="relative";
+    var subDiv=document.createElement("div");
+    subDiv.style.position="absolute";
+    subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+    targetDiv.appendChild(subDiv);
+
+
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,winRef);
+
+    
+
+    var size = winRef.screen.width;
+    if (size >= 1025) {
+        adsParams.image = 'https://cdn.flashtalking.com/42249/assets/bg_transparent.png';
+    } else if (size > 800 && size < 1025) {
+        adsParams.image = 'https://cdn.flashtalking.com/42249/assets/bg_transparent.png';
+    } else if (size <= 800) {
+        adsParams.image = 'https://cdn.flashtalking.com/42249/assets/bg_transparent.png';
+    }
+    if(typeof adsParams.background_image!="undefined")
+        adsParams.image=adsParams.background_image;
+
+    // Funci?n de gesti?n del evento del click
+   // setupBodyBackground(adsParams);
+    if(adsParams.background_src!="")
+       loadFTCreative(adsParams.background_src, adsParams.background_ftdiv, adsParams.background_size, adsParams.click, winRef);
+}
+
+function serveSkinExp(targetDiv,adsParams) {
+    
+    var document=winRef.document;
+
+    targetDiv.style.position="relative";
+    var subDiv=document.createElement("div");
+    subDiv.style.position="absolute";
+    subDiv.id="ftdiv"+adsParams.banner_ftdiv;
+    targetDiv.appendChild(subDiv);
+
+    adsParams.image=adsParams.background_image;
+    setupBodyBackground(adsParams);
+
+
+    loadFTCreative(adsParams.banner_src,adsParams.banner_ftdiv,adsParams.banner_size,adsParams.click,winRef);
+
+}
+
+function setupBodyBackground(adsParams) {
+
+    // Suponemos que no estamos en un iframe
+    var body = winRef.document.body;
+    if (location.href.indexOf("es.ccm.net") != -1) {
+        body.style.backgroundPosition = "50% 124px";
+        body.className += ' wallpaper';
+    } else if (location.href.indexOf("salud.ccm.net") != -1) {
+        body.className += ' wallpaper';
+        body.style.backgroundPosition = "50% 124px ";
+    } else if (location.href.indexOf("womenshealth") != -1) {
+        body.style.backgroundPosition = "50% 231px";
+        body.className += ' wallpaper-womenshealth wallpaper-web';
+        noClick=true;
+    } else if (location.href.indexOf("soycorredor") != -1) {
+        body.className += ' wallpaper-web';
+    } else if (location.href.indexOf("menshealth") != -1) {
+        body.style.backgroundPosition = "50% 0%";
+        body.className += ' wallpaper-menshealth wallpaper-web';
+        noClick=true;
+    } else if (location.href.indexOf("runners.es") != -1) {
+        body.className += ' wallpaper-foros-runners wallpaper-web';
+        body.style.backgroundPosition = "50% 88px";
+    } else if (location.href.indexOf("sportlife") != -1) {
+        body.style.backgroundPosition = "50% 210px";
+        body.className += ' wallpaper-web wallpaper-web';
+    } else if (location.href.indexOf("noticias.juridicas.com") != -1) {
+        body.style.backgroundPosition = "50% 0%";
+        body.className += ' wallpaper-juridicas';
+    } else if (location.href.indexOf("triatlon") != -1) {
+        body.style.backgroundPosition = "50% 208px";
+        body.className += ' wallpaper-triatlonweb wallpaper-web';
+    } else if (location.href.indexOf("trailrun") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+        body.className += ' wallpaper-trailrun wallpaper-web';
+    } else if (location.href.indexOf("autopista") != -1) {
+        body.style.backgroundPosition = "50% 201px";
+        body.className += ' wallpaper-web';
+    } else if (location.href.indexOf("cinesa") != -1) {
+        body.style.backgroundPosition = "50% 0%";
+        body.className += ' wallpaper-cinesa';
+    } else if (location.href.indexOf("terra") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-terra';
+    } else if (location.href.indexOf("guiadelnino") != -1) {
+        body.className += ' wallpaper-guidelnino';
+    } else if (location.href.indexOf("losreplicantes") != -1) {
+        body.style.backgroundPosition = "50% 48px";
+    } else if (location.href.indexOf("revistaoxigeno.es") != -1) {
+        body.style.backgroundPosition = "50% 165px";
+        body.className += ' wallpaper-oxigeno wallpaper-web';
+    } else if (location.href.indexOf("ecuestre.es") != -1) {
+        body.style.backgroundPosition = "50% 145px";
+        body.className += ' wallpaper-ecuestre wallpaper-web';
+        noClick=true;
+    } else if (location.href.indexOf("filmaffinity") != -1) {
+        body.className += ' wallpaper-filmaffinity';
+        body.style.backgroundPosition = "50% 90px";
+
+    } else if (location.href.indexOf("instyle.es") != -1) {
+        body.style.backgroundPosition = "50% 27px";
+
+    } else if (location.href.indexOf("animados.es") != -1) {
+        body.style.backgroundPosition = "50% 73px";
+
+    } else if (location.href.indexOf("defensacentralmotor.defensacentral") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+
+    } else if (location.href.indexOf("fichajes.defensacentral") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+
+    } else if (location.href.indexOf("donbalonrosa.defensacentral") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+
+    } else if (location.href.indexOf("miperro.defensacentral") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+
+    } else if (location.href.indexOf("defensacentral") != -1) {
+        body.style.backgroundPosition = "50% 43px";
+
+    } else if (location.href.indexOf("quemedico") != -1) {
+        body.className += ' wallpaper-quemedico';
+
+    } else if (location.href.indexOf("decooracion") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("decoora") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("jardineriaon") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("madreshoy") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("manualidadeson") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("mascorazon") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("thermorecetas.com") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("nutridieta.com") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("lasrecetascocina.com") != -1) {
+        body.style.backgroundPosition = "50% 108px";
+
+    } else if (location.href.indexOf("bezzia.com") != -1) {
+        body.style.backgroundPosition = "50% 106px";
+
+    } else if (location.href.indexOf("motociclismo.es") != -1) {
+        body.className += ' wallpaper-motociclismo wallpaper-web';
+        body.style.backgroundPosition = "50% 137px";
+
+    } else if (location.href.indexOf("europapress.es/nacional") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/internacional") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/economia") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/deporte") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/cultura") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/sociedad") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/ciencia") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/comunicados") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("sportstown") != -1) {
+        body.style.backgroundPosition = "50% 105px";
+
+    } else if (location.href.indexOf("bekiamoda") != -1) {
+        body.style.backgroundPosition = "50% 160px";
+
+    } else if (location.href.indexOf("bekiacocina") != -1) {
+        body.style.backgroundPosition = "50% 160px";
+
+    } else if (location.href.indexOf("bekiapsicologia") != -1) {
+        body.style.backgroundPosition = "50% 153px";
+
+    } else if (location.href.indexOf("bekiapadres") != -1) {
+        body.style.backgroundPosition = "50% 202px";
+
+    } else if (location.href.indexOf("bekiabelleza") != -1) {
+        body.style.backgroundPosition = "50% 157px";
+
+    } else if (location.href.indexOf("bekiapareja") != -1) {
+        body.style.backgroundPosition = "50% 154px";
+
+    } else if (location.href.indexOf("bekiasalud") != -1) {
+        body.style.backgroundPosition = "50% 162px";
+
+    } else if (location.href.indexOf("bekiamascotas") != -1) {
+        body.style.backgroundPosition = "50% 154px";
+
+    } else if (location.href.indexOf("bekianavidad") != -1) {
+        body.style.backgroundPosition = "50% 153px";
+
+    } else if (location.href.indexOf("bekiahoroscopo") != -1) {
+        body.style.backgroundPosition = "50% 155px";
+
+    } else if (location.href.indexOf("es.bekia.tv") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+
+    } else if (location.href.indexOf("bekia.es") != -1) {
+        body.style.backgroundPosition = "50% 163px";
+
+    } else if (location.href.indexOf("formulatv.com") != -1) {
+        body.style.backgroundPosition = "50% 80px";
+
+    } else if (location.href.indexOf("zonared.com") != -1) {
+        body.style.backgroundPosition = "50% 118px";
+        body.className += ' wallpaper-zonared ';
+
+    } else if (location.href.indexOf("tremending.publico") != -1) {
+        body.style.backgroundPosition = "50% 135px";
+
+    } else if (location.href.indexOf("ecartelera.com") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+
+    } else if (location.href.indexOf("merca2.es") != -1) {
+        body.style.backgroundPosition = "50% 181px";
+
+    } else if (location.href.indexOf("mycookrecetas.com") != -1) {
+        body.style.backgroundPosition = "50% 100px";
+
+    } else if (location.href.indexOf("nationalgeographic.com.es") != -1) {
+        body.style.backgroundPosition = "50% 4px";
+
+    } else if (location.href.indexOf("biwenger.com") != -1) {
+        body.style.backgroundPosition = "50% 216px";
+
+    } else if (location.href.indexOf("clara.es/belleza") != -1) {
+        body.style.backgroundPosition = "50% 65px";
+
+    } else if (location.href.indexOf("clara.es/moda") != -1) {
+        body.style.backgroundPosition = "50% 65px";
+
+    } else if (location.href.indexOf("clara.es/recetas") != -1) {
+        body.style.backgroundPosition = "50% 65px";
+
+    } else if (location.href.indexOf("clara.es/bienestar") != -1) {
+        body.style.backgroundPosition = "50% 65px";
+
+    } else if (location.href.indexOf("clara.es/trucos") != -1) {
+        body.style.backgroundPosition = "50% 65px";
+
+    } else if (location.href.indexOf("clara.es/blogs") != -1) {
+        body.style.backgroundPosition = "50% 65px";
+
+    } else if (location.href.indexOf("clara.es/horoscopo") != -1) {
+        body.style.backgroundPosition = "50% 65px";
+
+    } else if (location.href.indexOf("clara.es") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+
+    } else if (location.href.indexOf("zeleb.es/tv") != -1) {
+        body.style.backgroundPosition = "50% 82px";
+
+    } else if (location.href.indexOf("zeleb.es/style") != -1) {
+        body.style.backgroundPosition = "50% 192px";
+
+    } else if (location.href.indexOf("zeleb.es") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+
+    } else if (location.href.indexOf("aldia.cat") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+        body.className += ' wallpaper-ep-aldia';
+
+    } else if (location.href.indexOf("europapress.es/chance") != -1) {
+        body.style.backgroundPosition = "50% 40px";
+        body.className += ' wallpaper-chance';
+
+    } else if (location.href.indexOf("europapress.es/illes-balears") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/andalucia") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/aragon") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/cantabria") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/castilla") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/catalunya") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/extremadura") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/galicia") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/islas-canarias") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/madrid") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/euskadi") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/la-rioja") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/comunitat-valenciana") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/navarra") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/asturias") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/ceuta-y-melilla") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/portaltic") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+        body.className += ' wallpaper-ep-portaltic';
+
+    } else if (location.href.indexOf("europapress.es/epsocial") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/turismo") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/temas") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/motor") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es/desconecta") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-ep-resto';
+
+    } else if (location.href.indexOf("europapress.es") != -1) {
+        body.style.backgroundPosition = "50% 270px";
+        body.className += ' wallpaper-ep-home';
+
+    } else if (location.href.indexOf("sdpnoticias") != -1) {
+        body.style.backgroundPosition = "50% 75px";
+
+    } else if (location.href.indexOf("portal.beta.sdp.tw") != -1) {
+        body.style.backgroundPosition = "50% 75px";
+
+    } else if (location.href.indexOf("mountainbike.es") != -1) {
+        body.style.backgroundPosition = "50% 208px";
+        body.className += ' wallpaper-web';
+
+    } else if (location.href.indexOf("ciclismoafondo") != -1) {
+        body.style.backgroundPosition = "50% 208px";
+        body.className += ' wallpaper-web';
+
+    } else if (location.href.indexOf("libertaddigital.com") != -1) {
+        body.style.backgroundPositionX = "50%";
+
+        body.className += ' wallpaper-libertaddigital';
+        parent.publd.encaja_skin('scroll');
+    } else if (location.href.indexOf("libremercado.com") != -1) {
+        body.style.backgroundPositionX = "50%";
+
+        body.className += ' wallpaper-libremercado';
+        parent.publd.encaja_skin('scroll');
+    } else if (location.href.indexOf("lecturas.com") != -1) {
+        body.style.backgroundPosition = "50% 146px";
+
+    } else if (location.href.indexOf("tomatazos.com") != -1) {
+        body.style.backgroundPosition = "50% 114px";
+
+        parent.smartClipSkinCallback();
+    } else if (location.href.indexOf("creativity.smartclip-services.com/nautilus") != -1) {
+        body.style.backgroundPosition = "50% 60px";
+        body.className += ' wallpaper-web';
+
+    } else if (location.href.indexOf("eldesmarque") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+        body.style.backgroundRepeat = "no-repeat";
+
+        body.className += ' wallpaper-sc';
+    } else if (location.href.indexOf("martesdeespejo.com") != -1) {
+        body.style.backgroundPosition = "50% 101px";
+
+    } else if (location.href.indexOf("salir.com") != -1) {
+        body.style.backgroundPosition = "50% 62px";
+
+    } else if (location.href.indexOf("fourfourtwo") != -1) {
+        body.style.backgroundPosition = "50% 206px";
+        body.className += ' wallpaper-web';
+
+    } else if (location.href.indexOf("90min.com") != -1) {
+        body.style.backgroundPosition = "50% 54px";
+
+    } else if (location.href.indexOf("todotest") != -1) {
+        body.style.backgroundPosition = "50% 106px";
+        body.className += ' wallpaper-web';
+
+    } else if (location.href.indexOf("melodia-fm.com") != -1) {
+        body.style.backgroundPosition = "50% 32px";
+
+    } else if (location.href.indexOf("motor.atresmedia.com") != -1) {
+        body.style.backgroundPosition = "50% 72px";
+        body.className += ' wallpaper-sc';
+
+    } else if (location.href.indexOf("atresmedia") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+        body.className += ' wallpaper-sc';
+
+    } else if (location.href.indexOf("antena3") != -1) {
+        body.style.backgroundPosition = "50% 0px";
+        body.className += ' wallpaper-sc';
+
+    } else if (location.href.indexOf("climatempo.com") != -1) {
+        body.style.backgroundPosition = "50% 103px";
+
+    } else if (location.href.indexOf("20minutos.es") != -1) {
+        body.style.backgroundPosition = "50% 67px";
+
+    } else if (location.href.indexOf("guiainfantil.com") != -1) {
+        body.style.backgroundPosition = "50% 110px";
+
+    } else if (location.href.indexOf("web13tv-staging.enetres.net") != -1) {
+        body.style.backgroundPosition = "50% 94px";
+
+    } else if (location.href.indexOf("trecetv.es") != -1) {
+        body.style.backgroundPosition = "50% 94px";
+
+    } else if (location.href.indexOf("planetatrucos.com") != -1) {
+        body.style.backgroundPosition = "50% 155px";
+
+    } else if (location.href.indexOf("clarin.com/") != -1) {
+        body.style.backgroundPosition = "50% 225px";
+
+    } else if (location.href.indexOf("clarin.com") != -1) {
+        body.style.backgroundPosition = "50% 94px";
+
+    } else {
+        //Si es cualquier otro
+        body.style.backgroundPosition = "50% 0%";
+    }
+
+    body.style.cursor = 'default';
+    body.style.backgroundRepeat = "no-repeat";
+    body.style.minHeight = "500px";
+    body.style.width = "100%";
+    body.style.backgroundColor = adsParams.backgroundColor;
+    body.style.backgroundAttachment = adsParams.attachment;
+    if(typeof adsParams.image!="undefined")
+        body.style.backgroundImage="url('"+adsParams.image+"')";
+    var skin_backGroundClick = function(e) {
+        EE = e ? e : event;
+        if (!EE)
+            return;
+        var t = EE.target ? EE.target : EE.srcElement;
+        if ((!t || t.tagName != "BODY"  ) && t.parentNode.tagName != "BODY")
+            return;
+
+        var ad=winRef.open(adsParams.click+(typeof adsParams.destinationUrl==""?"":adsParams.destinationUrl));
+    }
+    body.addEventListener("click", skin_backGroundClick);
+}
+
+function adjustContainer(adsParams,width)
+{
+    var document=winRef.document;
+    setupBodyBackground(adsParams);
+    //body.addEventListener("click",function(){console.log("CLICK1");});
+    var topDoc = winRef.document;
+    // PRESET GENERAL
+    var theTimer = setInterval(function() {
+        element = winRef.document.getElementById('ftdiv' + adsParams.ftdiv);
+        if (!element)
+            return;
+        element.style.width = width;
+        element.style.height = adsParams.height + "px";
+        element.style.margin = "0px auto";
+        element.style.position = "relative";
+        clearInterval(theTimer);
+    }, 100);
+}
+
+function setupBackground(adsParams)
+{
+    if(typeof adsParams.image==="undefined")
+        return;
+
+    var body;
+    try {
+        body = winRef.document.body;
+    } catch(e) {
+        // Suponemos que no estamos en un iframe
+        /*body = document.body;
+
+        // Comprobamos si estamos dentro de un iframe, si es as? trabajamos con el body del padre
+        if (window.self !== winRef) {
+            //body = parent.document.body;
+
+            body = winRef.document.body;
+            window.frameElement.height = adsParams.height;
+            window.frameElement.width = 980;
+        }*/
+    }
+
+    // A partir de aqu? trabajamos s?lo con body
+
+    // Dependiendo del tama?o de pantalla asignamos una imagen u otra como background
+    var size = winRef.screen.width;
+
+    body.style.cursor = '[%CURSOR%]';
+
+    setupBodyBackground(adsParams);
+}
+
+
+function skinscCleaner() {
+
+    var body = parent.document.getElementsByTagName("body")[0];
+    console.log("sc-skinCleaner",body);
+
+        body.style.backgroundImage = "none";
+        body.classList.remove("sc-rmp");
+        body.classList.remove("sc-skin-exp");
+        body.classList.remove("sc-skin");
+        body.classList.remove("sc-skin-wall");
+
+    addEventListener("load",function(){skinscCleaner()});
+    
+}
+
+})();

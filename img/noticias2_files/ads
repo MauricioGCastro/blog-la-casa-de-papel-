@@ -1,0 +1,92 @@
+(function () {
+    var host = window.location.host;
+    var placement;
+
+    switch (host) {
+        case 'www.infosalus.com':
+            placement = 'infosalus';
+            break;
+
+        default:
+            placement = '';
+            break;
+    }
+
+    SmartIntxt = {
+        config: {
+            Intext_management_script: "https://cdn.smartclip-services.com/v1/Storage-a482323/smartclip-services/ava/ava.js",
+            site_name: "europapress",
+            playerHTML5: "es.europapress.intxt.html5.smartclip",
+            placement: placement,
+            elementContainer: 'intextsmartclip',
+            minAdWidth: 320,
+            maxAdWidth: 900,
+            customLocation: false,
+            customLocationQuery: ".p402_premium > p",
+            customLocationParent: ".p402_premium",
+            positioning: function () {
+                if (SmartIntxt.config.elementContainer == "") SmartIntxt.config.elementContainer = "sc_smartIntxt";
+                var position = Math.floor(parent.document.querySelectorAll(SmartIntxt.config.customLocationQuery).length / 3);
+                if (position) {
+                    els = parent.document.querySelectorAll(SmartIntxt.config.customLocationQuery)[position];
+                } else {
+                    els = parent.document.querySelectorAll(SmartIntxt.config.customLocationParent)[0];
+                };
+
+                var wrapper = '<div id="' + SmartIntxt.config.elementContainer + '"></div>';
+                if (els) {
+                    els.insertAdjacentHTML('afterend', wrapper);
+                };
+
+
+            }
+        },
+        "init": function () {
+            var sc_date = new Date();
+            var sc_day = sc_date.getDate();
+            var sc_hour = sc_date.getHours();
+            var sc_pixel = document.createElement("script");
+            var url = SmartAva.config.smartclipConfig;
+            sc_pixel.type = "text/javascript";
+            sc_pixel.src = url;
+            document.body.appendChild(sc_pixel);
+            var sc = document.createElement('script');
+            sc.type = 'text/javascript';
+            sc.async = 'true';
+            sc.src = '//dco.smartclip.net/?plc=92978',
+                sc.onload = sc.onreadystatechange = function () {
+                    var rs = this.readyState;
+                    if (rs && rs != 'complete' && rs != 'loaded') return;
+                    try {
+                        SmartPlay(SmartIntxt.config.elementContainer, {
+                            adRequest: '//ad.sxp.smartclip.net/select?type=dyn&ple=' + SmartIntxt.config.playerHTML5 + '~~400x320&cu_smar_cors=1&smar_cors=1&fwd_dt1=&fwd_dt2=&fwd_sz=400x320&&ang_contxt=1&inswipe=[ALLOWINSWIPE]&optout=&ang_tpl=2&consent=&rnd=70264002&ang_ref=https%3A%2F%2Fwww.culturaocio.com%2Ftv%2Fnoticia-13-preguntas-temporada-casa-papel-debe-responder-20200424173856.html',
+                            minAdWidth: SmartIntxt.config.minAdWidth,
+                            maxAdWidth: SmartIntxt.config.maxAdWidth,
+                            elementLocator: {
+                                allowInViewport: false,
+                                minimumElementWidth: 320,
+                                scanPixelsBelowViewport: 800
+                            },
+                            skipText: Site_conf.ava_desk.skipText,
+                            skipOffset: Site_conf.ava_desk.skipOffset, // overriden by VAST3 skipoffset, value of 0 will not show a skip button 0.1 will immediately show a ckip button
+                            behaviourMatrix: {
+                                'offScreen': {
+                                    paused: false,
+                                    muted: true
+                                }
+                            },
+                            onStartCallback: (function () { try { SmartAva.utils.ava_sc_smartIntxtStart(); sc_smartIntxtStart(); } catch (f) { } }),
+                            onCappedCallback: (function () { try { SmartAva.utils.ava_sc_smartIntxtNoad(); sc_smartIntxtNoad(); } catch (f) { } }),
+                            onEndCallback: (function () { try { SmartAva.utils.ava_sc_smartIntxtEnd(); sc_smartIntxtEnd(); } catch (f) { } })
+                        });
+                    } catch (e) { console.warn('error caught : ' + e); }
+                };
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(sc, s);
+        }
+    }
+    var sc_pixel = document.createElement("script");
+    sc_pixel.type = "text/javascript";
+    sc_pixel.src = SmartIntxt.config.Intext_management_script;
+    document.body.appendChild(sc_pixel);
+})();
